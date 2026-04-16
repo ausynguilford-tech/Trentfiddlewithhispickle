@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Speed Arcade Game Collection</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        h1 { text-align: center; }
+        .games { display: flex; flex-wrap: wrap; justify-content: space-around; }
+        .game { border: 1px solid #ccc; margin: 10px; padding: 10px; width: 200px; }
+    </style>
+</head>
+<body>
+    <h1>High-Speed Arcade Game Collection</h1>
+    <input type="text" id="search" placeholder="Search for games..." onkeyup="searchGames()">
+    <div class="games" id="games-list">
+        <div class="game" data-category="Slope">
+            <h2>Slope</h2>
+            <button onclick="playGame('Slope')">Play</button>
+        </div>
+        <div class="game" data-category="Racing">
+            <h2>Race 1</h2>
+            <button onclick="playGame('Race 1')">Play</button>
+        </div>
+        <div class="game" data-category="Runner">
+            <h2>Fast Runner</h2>
+            <button onclick="playGame('Fast Runner')">Play</button>
+        </div>
+    </div>
+    <script>
+        function searchGames() {
+            const input = document.getElementById('search').value.toLowerCase();
+            const games = document.getElementsByClassName('game');
+            for (let game of games) {
+                const title = game.getElementsByTagName('h2')[0].innerText.toLowerCase();
+                game.style.display = title.includes(input) ? '' : 'none';
+            }
+        }
+        function playGame(gameName) {
+            alert('Playing ' + gameName);
+            // Functionality to play the game would be added here
+        }
+    </script>
+</body>
+</html>
